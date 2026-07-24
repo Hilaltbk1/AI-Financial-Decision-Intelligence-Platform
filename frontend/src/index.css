@@ -1,0 +1,83 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap');
+
+/*
+  FOUNDRY — DecisionOS tema
+  Grafit/antrasit zemin + erimiş bakır (ember) vurgu.
+  Pozitif = patina yeşili (bakırın oksitlenmiş hali), Negatif = pas kırmızısı.
+*/
+:root {
+  --bg: #14161A;
+  --bg-alt: #101214;
+  --card: #1F2328;
+  --card-border: #33383F;
+  --divider: #2A2E34;
+
+  --text-h: #F2EFEA;
+  --text-muted: #8A8F98;
+
+  --ember: #FF6B35;
+  --ember-deep: #C1440E;
+  --ember-soft: rgba(255, 107, 53, 0.14);
+
+  --patina: #5FA88F;
+  --patina-soft: rgba(95, 168, 143, 0.14);
+
+  --rust: #D64545;
+  --rust-soft: rgba(214, 69, 69, 0.14);
+
+  --steel: #6E8CAE;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg);
+  color: var(--text-h);
+}
+
+/* Başlık / etiket / rozet metinleri için endüstriyel dar (condensed) font.
+   Uygulama genelinde "uppercase" class'ı taşıyan tüm elemanlara otomatik uygulanır. */
+[class*="uppercase"] {
+  font-family: 'Oswald', 'Inter', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+/* İmza öğesi #1 — Blueprint (teknik çizim) ızgarası.
+   Sayfa zeminine çok hafif bir mühendislik kağıdı dokusu verir. */
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 34px 34px;
+  background-position: -1px -1px;
+}
+
+/* İmza öğesi #2 — Teknik köşe işaretleri (blueprint annotation bracket).
+   Sadece en önemli 2-3 vurgu kartında kullanılır, aşırıya kaçmadan. */
+.blueprint-corners {
+  position: relative;
+}
+.blueprint-corners::before,
+.blueprint-corners::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: var(--ember);
+  border-style: solid;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.blueprint-corners::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+.blueprint-corners::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
